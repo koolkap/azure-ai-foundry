@@ -6,7 +6,7 @@ from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
 from azure.ai.projects.models import PromptAgentDefinition
 
-user_endpoint = "https://ai-foundry-sample-3-resource.services.ai.azure.com/api/projects/ai-foundry-sample-3"
+user_endpoint = "https://repo-foundry-ai.services.ai.azure.com/api/projects/repo-foundry-ai"
 
 project_client = AIProjectClient(
     endpoint=user_endpoint,
@@ -14,14 +14,14 @@ project_client = AIProjectClient(
 )
 
 agent_name = "my-first-agent"
-model_deployment_name = "gpt-5-mini"
+model_deployment_name = "gpt-5-nano"
 
 # Creates an agent, bumps the agent version if parameters have changed
 agent = project_client.agents.create_version(  
     agent_name=agent_name,
     definition=PromptAgentDefinition(
             model=model_deployment_name,
-            instructions="Give the user result into one liner not more than that.",
+            instructions="Create a storyteller which take the input from the user and create only one line of story out of it and don't create story in details.",
         ),
 )
 
